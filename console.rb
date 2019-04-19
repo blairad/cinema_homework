@@ -15,12 +15,12 @@ customer4 = Customer.new( { 'name' => 'Junior', 'funds' => 900})
 customer5 = Customer.new( { 'name' => 'Ralphie', 'funds' => 700})
 customer6 = Customer.new( { 'name' => 'Tony', 'funds' => 1000})
 
+
 film1 = Film.new( { 'title' => 'Godfather', 'price' => 15})
 film2 = Film.new( { 'title' => 'The Untouchables', 'price' => 10})
 film3 = Film.new( { 'title' => 'Goodfellas', 'price' => 12})
 film4 = Film.new( { 'title' => 'Gladiator', 'price' => 10})
 film5 = Film.new( { 'title' => 'Citizen Kane', 'price' => 10})
-
 
 
 customer1.save()
@@ -38,3 +38,13 @@ film5.save()
 
 ticket1 = Ticket.new( {'customer_id' => customer1.id, 'film_id' => film1.id })
 ticket1.save()
+
+Ticket.all()
+Customer.all()
+Film.all()
+
+film1.title = "Godfather 2"
+film1.update()
+
+customer5.name = "Carmela"
+customer5.update()

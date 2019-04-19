@@ -2,6 +2,9 @@ require_relative('../db/sql_runner')
 require_relative('./customer')
 require_relative('./tickets')
 
+require('pry')
+
+
 class Ticket
 
   attr_reader :id, :customer_id, :film_id
@@ -30,6 +33,19 @@ class Ticket
   def self.delete_all()
     sql = "DELETE FROM tickets"
     SqlRunner.run(sql)
+  end
+
+  def self.all()
+    sql = "SELECT * FROM tickets"
+    all_tickets = SqlRunner.run(sql)
+    #all_tickets.map{|tickets| Ticket.new(tickets)}
+    return self.map_items(all_tickets)
+     # p results
+  end
+
+  def self.map_items(ticket_data)
+    results = ticket_data.map { |ticket| Ticket.new(ticket) }
+    p results
   end
 
 end
