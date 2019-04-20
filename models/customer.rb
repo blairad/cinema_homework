@@ -1,7 +1,7 @@
 require_relative('../db/sql_runner')
 require_relative('./films')
 require_relative('./tickets')
-require_relative('./customer')
+# require_relative('./customer')
 
 
 require('pry')
@@ -38,6 +38,19 @@ class Customer
     SqlRunner.run(sql, values)
   end
 
+  def tickets_bought()
+    sql = "SELECT films.* FROM films
+          INNER JOIN tickets
+          ON films.id = tickets.film_id
+          INNER JOIN customers
+          ON customers.id = tickets.customer_id
+          WHERE customers.id = $1 "
+    values = [@id]
+    ticket_data = SqlRunner.run(sql, values)
+    return Film.map_items(ticket_data)
+
+  end
+
   def self.delete_all()
     sql = "DELETE FROM customers"
     SqlRunner.run(sql)
@@ -51,7 +64,7 @@ class Customer
 
   def self.map_items(customer_data)
     results = customer_data.map { |customer| Customer.new(customer) }
-    p results
+    #p results
   end
 
 end
