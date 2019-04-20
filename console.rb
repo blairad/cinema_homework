@@ -55,3 +55,4 @@ customer5.name = "Carmela"
 customer5.update()
 
 customer1.tickets_bought()
+film2.customer_film()

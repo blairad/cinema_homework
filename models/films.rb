@@ -36,15 +36,15 @@ class Film
   end
 
   def customer_film()
-    sql = "SELECT films.* FROM films
+    sql = "SELECT customers.* FROM customers
           INNER JOIN tickets
-          ON films.id = tickets.film_id
-          INNER JOIN customers
           ON customers.id = tickets.customer_id
-          WHERE customers.id = $1 "
+          INNER JOIN films
+          ON films.id = tickets.film_id
+          WHERE films.id = $1 "
     values = [@id]
-    ticket_data = SqlRunner.run(sql, values)
-    return Film.map_items(ticket_data)
+    customer_film = SqlRunner.run(sql, values)
+    p Customer.map_items(customer_film)
 
   end
 
