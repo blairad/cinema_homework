@@ -41,18 +41,23 @@ ticket2 = Ticket.new( {'customer_id' => customer2.id, 'film_id' => film2.id })
 ticket3 = Ticket.new( {'customer_id' => customer3.id, 'film_id' => film2.id })
 ticket4 = Ticket.new( {'customer_id' => customer4.id, 'film_id' => film1.id })
 ticket5 = Ticket.new( {'customer_id' => customer1.id, 'film_id' => film3.id })
+ticket6 = Ticket.new( {'customer_id' => customer6.id, 'film_id' => film1.id })
 ticket1.save()
+ticket2.save()
+ticket3.save()
+ticket4.save()
 ticket5.save()
+ticket6.save()
 
 Ticket.all()
 Customer.all()
 Film.all()
 
-film1.title = "Godfather 2"
-film1.update()
+# film1.title = "Godfather 2"
+# film1.update()
+#
+# customer5.name = "Carmela"
+# customer5.update()
 
-customer5.name = "Carmela"
-customer5.update()
-
-customer1.tickets_bought()
-film2.customer_film()
+# customer1.tickets_bought()
+film1.customer_film_choice()

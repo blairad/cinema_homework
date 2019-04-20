@@ -35,7 +35,7 @@ class Film
     SqlRunner.run(sql, values)
   end
 
-  def customer_film()
+  def customer_film_choice()
     sql = "SELECT customers.* FROM customers
           INNER JOIN tickets
           ON customers.id = tickets.customer_id
@@ -43,9 +43,9 @@ class Film
           ON films.id = tickets.film_id
           WHERE films.id = $1 "
     values = [@id]
-    customer_film = SqlRunner.run(sql, values)
-    p Customer.map_items(customer_film)
-
+    x = SqlRunner.run(sql, values)
+    p x.map{|each_customer| Customer.new(each_customer)}
+    # binding.pry
   end
 
   def self.delete_all()
