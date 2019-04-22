@@ -45,8 +45,19 @@ class Film
     values = [@id]
     x = SqlRunner.run(sql, values)
     p x.map{|each_customer| Customer.new(each_customer)}
-    # binding.pry
   end
+
+  # extension. i want all the customer who go to certain film
+  def films_watched()
+    sql = "SELECT * FROM tickets WHERE film_id = $1"
+    values = [@id]
+    films_watched = SqlRunner.run(sql, values)
+    p films_watched.count{ |watched| Film.new(watched)}
+
+     # binding.pry
+     # nil
+  end
+  #extension
 
   def self.delete_all()
     sql = "DELETE FROM films"
@@ -65,3 +76,14 @@ class Film
   end
 
 end
+
+
+# Basic extensions:
+# Buying tickets should decrease the funds of the customer by the price
+# Check how many tickets were bought by a customer
+# Check how many customers are going to watch a certain film
+# Advanced extensions:
+# Create a screenings table that lets us know what time films are showing
+# Write a method that finds out what is the most popular time (most tickets sold) for a given film
+# Limit the available tickets for screenings.
+# Add any other extensions you think would be great to have at a cinema!

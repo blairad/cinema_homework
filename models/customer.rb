@@ -48,7 +48,19 @@ class Customer
     values = [@id]
     ticket_data = SqlRunner.run(sql, values)
     return Film.map_items(ticket_data)
+  end
 
+  #extension
+
+  def number_of_tickets()
+    sql = "SELECT * FROM tickets WHERE customer_id = $1"
+    values = [@id]
+    customer_ticket_data = SqlRunner.run(sql, values)
+    p customer_ticket_data.count{ |cust| Customer.new(cust)}
+  end
+
+  def buying_tickets
+    ticket_cost = se 
   end
 
   def self.delete_all()

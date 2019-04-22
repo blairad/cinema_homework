@@ -49,9 +49,9 @@ ticket4.save()
 ticket5.save()
 ticket6.save()
 
-Ticket.all()
-Customer.all()
-Film.all()
+# Ticket.all()
+# Customer.all()
+# Film.all()
 
 # film1.title = "Godfather 2"
 # film1.update()
@@ -60,4 +60,10 @@ Film.all()
 # customer5.update()
 
 # customer1.tickets_bought()
-film1.customer_film_choice()
+#film1.customer_film_choice()
+
+# #extension attempt
+
+# ticket1.number_of_tickets()
+film2.films_watched()
+customer1.number_of_tickets()
